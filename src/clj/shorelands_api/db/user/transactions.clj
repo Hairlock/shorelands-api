@@ -1,8 +1,9 @@
 (ns shorelands-api.db.user.transactions
   (:require [buddy.hashers :as hashers]
 			[datomic.api :as d]
-			[shorelands-api.db.core :refer :all]
-			[shorelands-api.db.user.queries :as t]))
+			[shorelands-api.db.core :refer [conn]]
+			[shorelands-api.db.user.queries :as t]
+			))
 
 
 (defn add-user [user]

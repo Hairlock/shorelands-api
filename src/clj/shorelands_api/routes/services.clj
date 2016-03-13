@@ -5,7 +5,11 @@
 
 
 (defapi service-apis
-        (swagger-ui "/swagger-ui")
+        {:swagger {:ui "/swagger-ui"
+                   :spec "/swagger.json"
+                   :data {:info {:version "1.0.0"
+                                 :title "Shorelands API"
+                                 :description "Shorelands services"}}}}
         (swagger-docs
           {:info {:title "Shorelands Apis"
                   :version "0.0.1"}

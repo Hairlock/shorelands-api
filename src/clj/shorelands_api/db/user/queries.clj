@@ -1,17 +1,14 @@
 (ns shorelands-api.db.user.queries
   (:require [datomic.api :as d :refer [pull]]
-			[shorelands-api.db.core :refer [uri]]
-			[clojure.set :refer [union]]
-			[crypto.password.bcrypt :as password]))
+			[shorelands-api.db.core :refer [conn]]))
 
 
-(def db (d/db (d/connect uri)))
 
 (defn get-user-group [name]
   (->> (d/q '[:find ?e
 			  :in $ ?name
 			  :where [?e :group/name ?name]]
-		  	db
+		  	(d/db conn)
 			name)
 	   ffirst))
 
@@ -20,7 +17,7 @@
   (let [permission  (d/q '[:find ?perm
 						   :in $ ?eid
 						   :where [?eid :group/permission ?perm]]
-						 db gid)]
+						 conn gid)]
 	(first permission)))
 
 
@@ -35,13 +32,12 @@
 (defn get-users []
   (let [users (d/q '[:find [(pull ?uid [*]) ...]
 					 :where [?uid :user/name _]]
-				   db)]
+				   (d/db conn))]
 	(map format-users users)))
 
-;(get-users)
-;(def users (get-users))
 
 
-;(def groups (:groups (first (map format-users users))))
 
-;(some #{"Admin"} groups)
+
+
+

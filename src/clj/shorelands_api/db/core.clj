@@ -3,11 +3,12 @@
     [crypto.password.bcrypt :as password]
     [datomic.api :as d]
     [datomic-schema.schema :as s]
-    ;[config.core :refer [env]]
+    [clojure.tools.logging :refer [info]]
+    [shorelands-api.config :refer [env]]
+    [shorelands-api.db.schema :refer [schemas]]
+    [shorelands-api.db.seed :refer [seed-db]]
+    [mount.core :as mount :refer [defstate]]
     ))
-
-
-(def uri "datomic:mem://shorelandsdb")
 
 (defn parts []
   [(s/part "shorelands")])
@@ -36,60 +37,39 @@
         (s/generate-schema (schema) {:index-all? true})))))
 
 
-
-(defn seed-db []
-  (let [gid (d/tempid :db.part/user)
-        gid2 (d/tempid :db.part/user)
-        conn (d/connect uri)]
+(defn- new-connection [conf]
+  (let [uri (:database-uri conf)]
+    (info "Connection to datomic instance: " uri)
+    (d/create-database uri)
     (d/transact
-      conn
-      [{:db/id            gid
-        :group/name       "Staff"
-        :group/permission "Admin"}
-       {:db/id            gid2
-        :group/name       "Mod"
-        :group/permission "Moderator"}
-       {:db/id         (d/tempid :db.part/user)
-        :user/name     "Yannick"
-        :user/email    "yannick.sealy08@gmail.com"
-        :user/password (password/encrypt "password")
-        :user/group    [gid gid2]
-        :user/status   :user.status/active}
-       {:db/id         (d/tempid :db.part/user)
-        :user/name     "Julian"
-        :user/email    "jjelfs@gmail.com"
-        :user/password (password/encrypt "jeff")
-        :user/group    [gid gid2]
-        :user/status   :user.status/active}])))
+      (d/connect uri)
+      schemas
+      )
+    (seed-db)
+    (d/connect uri)))
+
+(defn- drop-connection [conf conn]
+  (let [uri (:database-uri conf)]
+    (info "Dropping connection to datomic instance: " uri)
+    (d/delete-database uri)))
 
 
-(defn start []
-  (setup-db)
-  (seed-db))
+(defstate conn
+          :start (new-connection env)
+          :stop (drop-connection env conn))
 
-(defn stop []
-  (d/delete-database uri))
+;(mount/stop #'conn)
+;(mount/start #'conn)
 
-(start)
-
-
-(def conn (d/connect uri))
-
-
-
-
-
+;(defn start []
+;  (setup-db)
+;  (seed-db))
+;
+;(defn stop []
+;  (d/delete-database uri))
 
 ;(start)
 
-;(println "Attributes defined in db:"
-;		 (map (comp :db/ident (partial d/entity (d/db (d/connect url))) first)
-;			  (d/q '[:find ?e :where [_ :db.install/attribute ?e]] (d/db (d/connect url)))))
 
-
-
-
-
-
-
+;(def conn (d/connect uri))
 
