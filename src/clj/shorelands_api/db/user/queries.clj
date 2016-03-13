@@ -38,7 +38,7 @@
 				   db)]
 	(map format-users users)))
 
-(get-users)
+;(get-users)
 ;(def users (get-users))
 
 
