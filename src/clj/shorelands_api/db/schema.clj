@@ -5,7 +5,19 @@
   [(s/part "shorelands")])
 
 (defn create-schemas []
-  [(s/schema user
+  [(s/schema property
+             (s/fields
+               [name :string :indexed :unique-value]
+               [description :string "Description of the property"]
+               [location :string "Location of the property"]
+               [propertytype :enum [:land :home]]
+               [sellprice :float]
+               [rentprice :float]
+               [amenities :ref :many]))
+   (s/schema amenity
+             (s/fields
+               [text :string "Amenity text"]))
+   (s/schema user
              (s/fields
                [name :string :indexed :unique-value]
                [email :string :indexed :unique-value]

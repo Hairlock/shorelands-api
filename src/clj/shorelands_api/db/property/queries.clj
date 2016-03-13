@@ -4,17 +4,20 @@
             [shorelands-api.db.core :refer [conn]]))
 
 
-(def db
-  (->
-    (:database-uri env)
-    (d/connect)
-    (d/db)))
+(defn format-property
+  [property]
+  (let [{id :db/id name :property/name description :property/description
+         sellprice :property/sellprice rentprice :property/rentprice } property]
+    {:id id
+     :name name
+     :description description
+     :sellprice sellprice
+     :rentprice rentprice}))
 
 (defn get-properties []
   (let [properties (d/q '[:find [(pull ?pid [*]) ...]
                           :where [?pid :property/name _]]
-                        conn)]
-    ;(map format-properties properties)
-    ))
+                        (d/db conn))]
+    (map format-property properties)))
 
 
