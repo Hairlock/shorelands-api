@@ -1,21 +1,11 @@
-# shorelands-api
+# Shorelands-api
 
-generated using Luminus version "2.9.10.21"
-
-FIXME
-
-## Prerequisites
-
-You will need [Leiningen][1] 2.0 or above installed.
-
-[1]: https://github.com/technomancy/leiningen
+Api services for shorelands real estate website
 
 ## Running
 
-To start a web server for the application, run:
-
-    lein run
+lein run
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 Shorelands Real Estate
