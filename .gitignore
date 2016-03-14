@@ -5,6 +5,7 @@
 /classes
 /checkouts
 pom.xml
+/src/clj/shorelands_api/log
 *.jar
 *.class
 /.lein-*
