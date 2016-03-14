@@ -6,8 +6,6 @@
 (defn seed-db []
   (let [gid (d/tempid :db.part/user)
         gid2 (d/tempid :db.part/user)
-        pid (d/tempid :db.part/user)
-        pid2 (d/tempid :db.part/user)
         conn (d/connect (:database-uri env))]
     (d/transact
       conn
@@ -30,17 +28,15 @@
         :user/password (password/encrypt "jeff")
         :user/group    [gid gid2]
         :user/status   :user.status/active}
-       {:db/id        pid
-        :amenity/text "Premium end unit with fantastic ocean and city views"}
-       {:db/id        pid2
-        :amenity/text "Floor area climate-controlled"}
        {:db/id                 (d/tempid :db.part/user)
         :property/name         "Rainbow Villas"
+        :property/location     "Goodwood Park"
         :property/description  "This is a 5,000 square foot luxury 4
                                bedroom 4 bathroom villa in a gated
                                community called Rainbow Villas at Goodwood
                                Park."
-        :property/propertytype :property.propertytype/home
+        :property/propertytype "house"
         :property/sellprice    5500000.00
         :property/rentprice    25800.00
-        :property/amenities     [pid pid2]}])))
+        :property/amenities     "Premium end unit with fantastic ocean and city views,
+                                  Floor area climate-controlled"}])))

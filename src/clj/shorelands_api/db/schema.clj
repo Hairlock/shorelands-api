@@ -10,10 +10,10 @@
                [name :string :indexed :unique-value]
                [description :string "Description of the property"]
                [location :string "Location of the property"]
-               [propertytype :enum [:land :home]]
+               [propertytype :string "Type of property"]
                [sellprice :float]
                [rentprice :float]
-               [amenities :ref :many]))
+               [amenities :string "List of amenities"]))
    (s/schema amenity
              (s/fields
                [text :string "Amenity text"]))

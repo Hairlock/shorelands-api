@@ -29,7 +29,8 @@
                  [com.datomic/datomic-free "0.9.5350"
                   :exclusions [org.slf4j/slf4j-nop org.slf4j/log4j-over-slf4j]]
                  [datomic-schema "1.3.0"]
-                 [crypto-password "0.2.0"]]
+                 [crypto-password "0.2.0"]
+                 [markdown-clj "0.9.86"]]
 
   :min-lein-version "2.0.0"
 

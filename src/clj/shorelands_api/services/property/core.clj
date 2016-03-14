@@ -7,11 +7,14 @@
 
 
 (s/defschema Property
-  {:id          Long
-   :name        String
-   :description String
-   :sellprice   Float
-   :rentprice   Float})
+  {:id           Long
+   :name         String
+   :description  String
+   :location     String
+   :amenities    String
+   :propertytype String
+   :sellprice    Float
+   :rentprice    Float})
 
 (def property-service
   (context "/api" []
