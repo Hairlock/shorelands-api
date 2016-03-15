@@ -5,8 +5,9 @@
     [shorelands-api.config :refer [env]]
     [shorelands-api.db.schema :refer [schemas]]
     [shorelands-api.db.seed :refer [seed-db]]
-    [mount.core :refer [defstate]]
-    ))
+    [mount.core :refer [defstate]]))
+
+
 
 
 (defn- new-connection [conf]

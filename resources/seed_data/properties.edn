@@ -1,0 +1,36 @@
+[{:db/id            #db/id[:db.part/user -1000001]
+  :group/name       "Mod"
+  :group/permission "Moderator"}
+
+ {:db/id            #db/id [:db.part/user -1000002]
+  :group/name       "Admin"
+  :group/permission "Administrator"}
+
+ {:db/id         #db/id [:db.part/user -1000003]
+  :user/name     "Yannick"
+  :user/email    "yannick.sealy08@gmail.com"
+  :user/password "password"
+  :user/group    #db/id[:db.part/user -1000001 -1000002]
+  :user/status   :user.status/active}
+
+ {:db/id         #db/id [:db.part/user -1000004]
+  :user/name     "Matthew"
+  :user/email    "matthew2@gmail.com"
+  :user/password "password"
+  :user/group    #db/id[:db.part/user -1000001]
+  :user/status   :user.status/active}
+
+ {:db/id                 #db/id [:db.part/user -1000005]
+  :property/name         "Rainbow Villas"
+  :property/location     "Goodwood Park"
+  :property/description  "This is a 5,000 square foot luxury 4
+                               bedroom 4 bathroom villa in a gated
+                               community called Rainbow Villas at Goodwood
+                               Park."
+  :property/propertytype "house"
+  :property/sellprice    5500000.00
+  :property/rentprice    25800.00
+  :property/amenities    "Premium end unit with fantastic ocean and city views,
+                                  Floor area climate-controlled"}
+
+ ]
