@@ -46,7 +46,5 @@
   ((:init defaults))
   (.addShutdownHook (Runtime/getRuntime) (Thread. stop-app)))
 
-(start-app [])
-
 (defn -main [& args]
   (start-app args))
