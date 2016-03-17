@@ -33,4 +33,17 @@
   :property/amenities    "Premium end unit with fantastic ocean and city views,
                                   Floor area climate-controlled"}
 
+ {:db/id                 #db/id [:db.part/user -1000006]
+  :property/name         "La Renaissance"
+  :property/location     "Shorelands"
+  :property/description  "This unit has a fully equipped kitchen with GE Monogram
+                          appliances, is beautifully tiled and is available for
+                          immediate occupancy."
+  :property/propertytype "house"
+  :property/sellprice    15500000.00
+  :property/rentprice    38500.00
+  :property/amenities    "Unparalleled security,Concierge,Valet,Spa,Sauna,Gym,Social
+                          room for catered gatherings,Rental sellprice US $6000,Sale
+                          sellprice TT $15.5million"}
+
  ]
