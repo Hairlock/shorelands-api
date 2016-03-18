@@ -46,4 +46,16 @@
                           room for catered gatherings,Rental sellprice US $6000,Sale
                           sellprice TT $15.5million"}
 
+ {:db/id                 #db/id [:db.part/user -1000007]
+  :property/name         "The Buoys"
+  :property/location     "Carenage"
+  :property/description  "The Buoys is a luxury gated community in the West with Clubhouse
+                          and Tennis Courts. This lot also enjoys views of the city skyline."
+  :property/propertytype "house"
+  :property/sellprice    3500000.00
+  :property/rentprice    0.00
+  :property/amenities    "Unparalleled security,Concierge,Valet,Spa,Sauna,Gym,Social
+                          room for catered gatherings,Rental sellprice US $6000,Sale
+                          sellprice TT $15.5million"}
+
  ]
