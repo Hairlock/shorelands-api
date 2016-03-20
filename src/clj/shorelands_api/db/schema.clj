@@ -7,7 +7,7 @@
 (defn create-schemas []
   [(s/schema property
              (s/fields
-               [name :string :indexed :unique-value]
+               [name :string :unique-value]
                [description :string "Description of the property"]
                [location :string "Location of the property"]
                [propertytype :string "Type of property"]
@@ -19,8 +19,8 @@
                [text :string "Amenity text"]))
    (s/schema user
              (s/fields
-               [name :string :indexed :unique-value]
-               [email :string :indexed :unique-value]
+               [name :string :unique-value]
+               [email :string :unique-value]
                [password :string "Hashed password string"]
                [status :enum [:pending :active :inactive :cancelled]]
                [group :ref :many]))

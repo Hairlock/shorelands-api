@@ -8,8 +8,6 @@
     [mount.core :refer [defstate]]))
 
 
-
-
 (defn- new-connection [conf]
   (let [uri (:database-uri conf)]
     (info "Connection to datomic instance: " uri)

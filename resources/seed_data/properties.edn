@@ -58,4 +58,16 @@
                           room for catered gatherings,Rental sellprice US $6000,Sale
                           sellprice TT $15.5million"}
 
+ {:db/id                 #db/id [:db.part/user -1000008]
+  :property/name         "Plaissance Beachfront"
+  :property/location     "Plaissance"
+  :property/description  "This property has approval from T&CPD (town and country Planning
+                          Division) to subdivide into villa sites."
+  :property/propertytype "land"
+  :property/sellprice    3500000.00
+  :property/rentprice    0.00
+  :property/amenities    "3 minutes walk from the UTT & UWI (university) campuses,Swimming
+                          pool,Tennis courts,Asking sellprice is  TT 9.5 million,CEC(certificate
+                          of environmental clearance) from the EMA(environmental management
+                          authority)."}
  ]

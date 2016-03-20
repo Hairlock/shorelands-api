@@ -3,6 +3,7 @@
 /target
 /lib
 /classes
+/src/clj/shorelands_api/db/property/test.clj
 /checkouts
 pom.xml
 /src/clj/shorelands_api/log

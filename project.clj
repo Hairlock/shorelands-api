@@ -42,6 +42,8 @@
 
   :plugins [[lein-cprop "1.0.1"]]
   :target-path "target/%s/"
+  ;:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
+  ;                                 :creds :gpg}}
   :profiles
   {:uberjar {:omit-source true
              

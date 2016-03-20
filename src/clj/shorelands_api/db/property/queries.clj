@@ -6,9 +6,9 @@
 
 (defn format-property
   [property]
-  (let [{id :db/id name :property/name description :property/description
-         sellprice :property/sellprice rentprice :property/rentprice
-         amenities :property/amenities location :property/location
+  (let [{id           :db/id name :property/name description :property/description
+         sellprice    :property/sellprice rentprice :property/rentprice
+         amenities    :property/amenities location :property/location
          propertytype :property/propertytype} property]
     {:id           id
      :name         name
