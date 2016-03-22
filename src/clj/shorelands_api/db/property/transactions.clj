@@ -9,9 +9,3 @@
   (let [prop (property->dbproperty property)]
     @(d/transact conn [prop])
     (get-properties)))
-
-
-
-
-
-

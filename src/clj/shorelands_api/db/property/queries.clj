@@ -3,6 +3,7 @@
             [shorelands-api.config :refer [env]]
             [shorelands-api.db.core :refer [conn]]))
 
+(def valid-sort-keys #{:sellprice :rentprice :propertytype :name})
 
 (defn format-property
   [property]
@@ -19,10 +20,14 @@
      :sellprice    sellprice
      :rentprice    rentprice}))
 
+
 (defn get-properties []
   (let [properties (d/q '[:find [(pull ?pid [*]) ...]
                           :where [?pid :property/name _]]
                         (d/db conn))]
     (map format-property properties)))
 
-
+(defn sort-properties [sort-key]
+  (if (contains? valid-sort-keys sort-key)
+    (sort-by sort-key (get-properties))
+    (get-properties)))
