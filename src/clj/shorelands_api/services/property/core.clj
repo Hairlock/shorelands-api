@@ -36,4 +36,12 @@
                   :description "Accepts a property, nil values will fail validation"
                   :middleware [wrap-cors]
                   (ok (t/update-property property)))
+
+           (POST "/properties" []
+                 :body [property Property]
+                 :return [Property]
+                 :summary "attempts adds the given property to the database"
+                 :description "Property name needs to be a unique value"
+                 :middleware [wrap-cors]
+                 (ok (t/create-property property)))
            ))
