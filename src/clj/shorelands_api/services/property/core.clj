@@ -29,7 +29,7 @@
                 :middleware [wrap-cors]
                 (ok (q/get-properties)))
 
-           (PATCH "/properties" []
+           (POST "/properties" []
                   :body [property Property]
                   :return [Property]
                   :summary "updates the property given a property id"
@@ -37,7 +37,7 @@
                   :middleware [wrap-cors]
                   (ok (t/update-property property)))
 
-           (POST "/properties" []
+           (PUT "/properties" []
                  :body [property Property]
                  :return [Property]
                  :summary "attempts adds the given property to the database"
