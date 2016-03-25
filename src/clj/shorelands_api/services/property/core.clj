@@ -14,8 +14,8 @@
    :location     String
    :amenities    String
    :propertytype String
-   :sellprice    Float
-   :rentprice    Float})
+   :sellprice    Long
+   :rentprice    Long})
 
 (def property-service
   (context "/api" []

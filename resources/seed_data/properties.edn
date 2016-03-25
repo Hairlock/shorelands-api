@@ -28,8 +28,8 @@
                                community called Rainbow Villas at Goodwood
                                Park."
   :property/propertytype "house"
-  :property/sellprice    5500000.00
-  :property/rentprice    25800.00
+  :property/sellprice    5500000
+  :property/rentprice    25800
   :property/amenities    "Premium end unit with fantastic ocean and city views,
                                   Floor area climate-controlled"}
 
@@ -40,8 +40,8 @@
                           appliances, is beautifully tiled and is available for
                           immediate occupancy."
   :property/propertytype "house"
-  :property/sellprice    15500000.00
-  :property/rentprice    38500.00
+  :property/sellprice    15500000
+  :property/rentprice    38500
   :property/amenities    "Unparalleled security,Concierge,Valet,Spa,Sauna,Gym,Social
                           room for catered gatherings,Rental sellprice US $6000,Sale
                           sellprice TT $15.5million"}
@@ -52,8 +52,8 @@
   :property/description  "The Buoys is a luxury gated community in the West with Clubhouse
                           and Tennis Courts. This lot also enjoys views of the city skyline."
   :property/propertytype "house"
-  :property/sellprice    3500000.00
-  :property/rentprice    0.00
+  :property/sellprice    3500000
+  :property/rentprice    0
   :property/amenities    "Unparalleled security,Concierge,Valet,Spa,Sauna,Gym,Social
                           room for catered gatherings,Rental sellprice US $6000,Sale
                           sellprice TT $15.5million"}
@@ -64,8 +64,8 @@
   :property/amenities    "Completed refurbished kitchen with granite counters,Stainless steel appliances,Swimming pool + Jacuzzi"
   :property/location     "Glencoe"
   :property/propertytype "house"
-  :property/sellprice    1.00
-  :property/rentprice    0.00}
+  :property/sellprice    1
+  :property/rentprice    0}
 
  {:db/id                 #db/id [:db.part/user -1000009]
   :property/name         "Plaissance"
@@ -73,8 +73,8 @@
   :property/amenities    "placeholder"
   :property/location     "St. Margaret's village"
   :property/propertytype "land"
-  :property/sellprice    1.00
-  :property/rentprice    0.00}
+  :property/sellprice    1
+  :property/rentprice    0}
 
  {:db/id                 #db/id [:db.part/user -1000010]
   :property/name         "Plaissance Beachfront"
@@ -82,8 +82,8 @@
   :property/description  "This property has approval from T&CPD (town and country Planning
                           Division) to subdivide into villa sites."
   :property/propertytype "land"
-  :property/sellprice    9500000.00
-  :property/rentprice    0.00
+  :property/sellprice    9500000
+  :property/rentprice    0
   :property/amenities    "3 minutes walk from the UTT & UWI (university) campuses,Swimming
                           pool,Tennis courts,Asking sellprice is  TT 9.5 million,CEC(certificate
                           of environmental clearance) from the EMA(environmental management
@@ -94,8 +94,8 @@
   :property/description  "8000 Sqaure feet approved building lots in a gated secure community with financing readily available. "
   :property/location     "Sunset drive, Mayaro"
   :property/propertytype "land"
-  :property/sellprice    1.00
-  :property/rentprice    0.00
+  :property/sellprice    1
+  :property/rentprice    0
   :property/amenities    "Gentle constant sea breeze,Excellent water sports,Next to sunset beach
                           resort with swimming pools and children's playground and entertainment
                           center,Quiet rural countryside setting. Ideal for weekend getaways or retirement home.
@@ -110,8 +110,8 @@
   :property/description  "The Hingwan Drive property is a beachfront development."
   :property/location     "Hingwan Drive"
   :property/propertytype "land"
-  :property/sellprice    300000.00
-  :property/rentprice    0.00
+  :property/sellprice    300000
+  :property/rentprice    0
   :property/amenities    "Close to the university's amenities,Tennis Court,Swimming pool,Soccer field,
       The land has Town & Country approval with good infrastructure such as lights & water & drainage,
       5000 square foot lots,TT $300000 perlot"}
@@ -121,8 +121,8 @@
   :property/description  "This is a two acre commercial lot situated on the Guayaguayare main road next to Cherry's mini-mart."
   :property/location     "St. Margaret's village, Mayaro"
   :property/propertytype "land"
-  :property/sellprice    1.00
-  :property/rentprice    0.00
+  :property/sellprice    1
+  :property/rentprice    0
   :property/amenities    "placeholder"}
 
 

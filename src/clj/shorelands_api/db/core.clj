@@ -5,6 +5,7 @@
     [shorelands-api.config :refer [env]]
     [shorelands-api.db.schema :refer [schemas]]
     [shorelands-api.db.seed :refer [seed-db]]
+    [shorelands-api.db.property.functions :refer [add-property-fns]]
     [mount.core :refer [defstate]]))
 
 
@@ -16,6 +17,7 @@
       (d/connect uri)
       schemas)
     (seed-db)
+    (add-property-fns (d/connect uri))
     (d/connect uri)))
 
 
