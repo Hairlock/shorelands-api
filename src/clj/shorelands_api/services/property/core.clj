@@ -18,7 +18,7 @@
    :rentprice    Long})
 
 (defn format-error-response [e]
-  (let [ex (ex-data (.getCause e))
+  (let [ex (or (ex-data (.getCause e)) (ex-data e))
         error (:error ex)]
     (case (:cause ex)
       :ValidationFailed (bad-request {:error error})
@@ -32,12 +32,17 @@
            (GET "/properties" []
                 :return [Property]
                 :query-params [{sort :- s/Str nil}
-                               {page :- s/Int nil}]
+                               {page :- s/Int nil}
+                               {limit :- s/Int nil}]
                 :summary "returns a list of all available properties"
                 :description "Returns an array of properties"
                 :middleware [wrap-cors]
-                (ok (q/get-properties {:sort sort
-                                       :page page})))
+                (try
+                  (ok (q/get-properties {:sort sort
+                                         :limit limit
+                                         :page page}))
+                  (catch Exception e
+                    (format-error-response e))))
 
            (POST "/properties" []
                  :body [property Property]
