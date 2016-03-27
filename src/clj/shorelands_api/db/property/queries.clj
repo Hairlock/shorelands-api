@@ -4,18 +4,15 @@
             [shorelands-api.db.core :refer [conn]]
             [shorelands-api.db.property.core :refer [dbproperty->property]]))
 
-(def valid-sort-keys #{:sellprice :rentprice :propertytype :name})
+(def valid-sort-keys #{:sellprice :rentprice :propertytype :name :id})
 
-(defn get-properties []
-  (let [properties (d/q '[:find [(pull ?pid [*]) ...]
+(defn get-properties [transforms]
+  (let [{:keys [sort page]} transforms
+        properties (d/q '[:find [(pull ?pid [*]) ...]
                           :where [?pid :property/name _]]
-                        (d/db conn))]
+                        (d/db conn))
+        sort-fn (keyword (or sort :id))]
     (->> properties
          (map dbproperty->property)
-         (sort-by :id))))
+         (sort-by sort-fn))))
 
-
-(defn sort-properties [sort-key]
-  (if (contains? valid-sort-keys sort-key)
-    (sort-by sort-key (get-properties))
-    (-> (get-properties))))

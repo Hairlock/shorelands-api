@@ -17,6 +17,13 @@
    :sellprice    Long
    :rentprice    Long})
 
+(defn format-error-response [e]
+  (let [ex (ex-data (.getCause e))
+        error (:error ex)]
+    (case (:cause ex)
+      :ValidationFailed (bad-request {:error error})
+      (internal-server-error))))
+
 (def property-service
   (context "/api" []
 
@@ -24,10 +31,13 @@
 
            (GET "/properties" []
                 :return [Property]
+                :query-params [{sort :- s/Str nil}
+                               {page :- s/Int nil}]
                 :summary "returns a list of all available properties"
                 :description "Returns an array of properties"
                 :middleware [wrap-cors]
-                (ok (q/get-properties)))
+                (ok (q/get-properties {:sort sort
+                                       :page page})))
 
            (POST "/properties" []
                  :body [property Property]
@@ -35,7 +45,10 @@
                  :summary "updates the property given a property id"
                  :description "Accepts a property, nil values will fail validation"
                  :middleware [wrap-cors]
-                 (ok (t/update-property property)))
+                 (try
+                   (ok (t/update-property property))
+                   (catch Exception e
+                     (format-error-response e))))
 
            (PUT "/properties" []
                 :body [property Property]
@@ -43,7 +56,10 @@
                 :summary "attempts adds the given property to the database"
                 :description "Property name needs to be a unique value"
                 :middleware [wrap-cors]
-                (ok (t/create-property property)))
+                (try
+                  (ok (t/create-property property))
+                  (catch Exception e
+                    (format-error-response e))))
 
            (DELETE "/properties" []
                    :body [property Property]

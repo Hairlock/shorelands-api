@@ -21,7 +21,8 @@
                 :code   (if-let [prop (d/invoke db :property/construct-map db property)]
                           [prop]
                           (throw (ex-info "Validation failed"
-                                          {:property/name ["Already exists"]})))}))
+                                          {:cause :ValidationFailed
+                                           :error {:property/name "Already exists"}})))}))
 
 (defn add-property-fns [conn]
   @(d/transact conn [{:db/id    (d/tempid :db.part/user)
