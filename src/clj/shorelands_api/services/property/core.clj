@@ -30,18 +30,26 @@
                 (ok (q/get-properties)))
 
            (POST "/properties" []
-                  :body [property Property]
-                  :return [Property]
-                  :summary "updates the property given a property id"
-                  :description "Accepts a property, nil values will fail validation"
-                  :middleware [wrap-cors]
-                  (ok (t/update-property property)))
-
-           (PUT "/properties" []
                  :body [property Property]
                  :return [Property]
-                 :summary "attempts adds the given property to the database"
-                 :description "Property name needs to be a unique value"
+                 :summary "updates the property given a property id"
+                 :description "Accepts a property, nil values will fail validation"
                  :middleware [wrap-cors]
-                 (ok (t/create-property property)))
+                 (ok (t/update-property property)))
+
+           (PUT "/properties" []
+                :body [property Property]
+                :return [Property]
+                :summary "attempts adds the given property to the database"
+                :description "Property name needs to be a unique value"
+                :middleware [wrap-cors]
+                (ok (t/create-property property)))
+
+           (DELETE "/properties" []
+                   :body [property Property]
+                   :return [Property]
+                   :summary "attempts to delete the given property by name"
+                   :description "Properties are not deleted permanently, see PATCH"
+                   :middleware [wrap-cors]
+                   (ok (t/delete-property property)))
            ))

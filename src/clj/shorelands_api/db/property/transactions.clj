@@ -11,10 +11,16 @@
   (let [prop (-> property
                  (property->dbproperty)
                  (merge {:db/id (d/tempid :db.part/user)}))]
-    @(d/transact conn [[:property/create prop]])))
+    @(d/transact conn [[:property/create prop]])
+    (get-properties)))
 
 
 (defn update-property [property]
   (let [prop (property->dbproperty property)]
     @(d/transact conn [prop])
     (get-properties)))
+
+
+(defn delete-property [property]
+  @(d/transact conn [[:db.fn/retractEntity [:property/name (:name property)]]])
+  (get-properties))

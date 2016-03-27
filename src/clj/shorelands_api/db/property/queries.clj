@@ -10,10 +10,12 @@
   (let [properties (d/q '[:find [(pull ?pid [*]) ...]
                           :where [?pid :property/name _]]
                         (d/db conn))]
-    (map dbproperty->property properties)))
+    (->> properties
+         (map dbproperty->property)
+         (sort-by :id))))
 
 
 (defn sort-properties [sort-key]
   (if (contains? valid-sort-keys sort-key)
     (sort-by sort-key (get-properties))
-    (get-properties)))
+    (-> (get-properties))))
