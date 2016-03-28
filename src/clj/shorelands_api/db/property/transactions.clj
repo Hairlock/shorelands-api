@@ -22,5 +22,5 @@
 
 
 (defn delete-property [property]
-  @(d/transact conn [[:db.fn/retractEntity [:property/name (:name property)]]])
+  @(d/transact conn [[:db.fn/retractEntity (:id property)]])
   (get-properties))
