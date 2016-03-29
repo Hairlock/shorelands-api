@@ -4,4 +4,5 @@
  :nrepl-port 7000
  ;:database-uri "datomic:dev://localhost:4334/shorelands"
  :database-uri "datomic:mem://shorelandsdb"
+ :auth-key "M1r@n@"
  }

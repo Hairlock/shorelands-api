@@ -22,6 +22,7 @@
                [name :string :unique-value]
                [email :string :unique-value]
                [password :string "Hashed password string"]
+               [token :string "Authentication token for api validation"]
                [status :enum [:pending :active :inactive :cancelled]]
                [group :ref :many]))
    (s/schema group

@@ -22,9 +22,9 @@
 
 
 (defn format-users
-  [{id :db/id username :user/name email :user/email groups :user/group}]
+  [{id :db/id name :user/name email :user/email groups :user/group}]
   {:id id
-   :username username
+   :name name
    :email    email
    ;:groups   (flatten (map get-group-permission groups))
    })

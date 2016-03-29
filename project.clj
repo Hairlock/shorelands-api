@@ -20,7 +20,6 @@
                  [ring-ttl-session "0.3.0"]
                  [mount "0.1.10"]
                  [cprop "0.1.6"]
-                 [buddy "0.10.0"]
                  [org.clojure/tools.cli "0.3.3"]
                  [luminus-nrepl "0.1.4"]
                  [luminus-http-kit "0.1.3"]
@@ -30,7 +29,9 @@
                   :exclusions [org.slf4j/slf4j-nop org.slf4j/log4j-over-slf4j]]
                  [datomic-schema "1.3.0"]
                  [crypto-password "0.2.0"]
-                 [markdown-clj "0.9.86"]]
+                 [markdown-clj "0.9.86"]
+                 [buddy "0.11.0"]
+                 [buddy/buddy-auth "0.11.0"]]
 
   :min-lein-version "2.0.0"
 
