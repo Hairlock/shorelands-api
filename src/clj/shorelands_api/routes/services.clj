@@ -1,6 +1,6 @@
 (ns shorelands-api.routes.services
-  (:require [shorelands-api.services.user.core :refer [user-service]]
-            [shorelands-api.services.property.core :refer [property-service]]
+  (:require [shorelands-api.services.user.api :refer [user-service]]
+            [shorelands-api.services.property.api :refer [property-service]]
             [compojure.api.sweet :refer [defapi]]
             [compojure.api.swagger :refer [swagger-ui swagger-docs]]))
 

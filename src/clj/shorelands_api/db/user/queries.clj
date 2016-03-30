@@ -22,10 +22,12 @@
 
 
 (defn format-users
-  [{id :db/id name :user/name email :user/email groups :user/group}]
+  [{id :db/id name :user/name email :user/email groups :user/group
+		token :user/token}]
   {:id id
    :name name
    :email    email
+	 :token token
    ;:groups   (flatten (map get-group-permission groups))
    })
 
@@ -34,10 +36,6 @@
 					 :where [?uid :user/name _]]
 				   (d/db conn))]
 	(map format-users users)))
-
-
-
-
 
 
 

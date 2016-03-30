@@ -3,11 +3,15 @@
             [clojure.tools.logging :as log]
             [shorelands-api.env :refer [defaults]]
             [shorelands-api.config :refer [env]]
+            [shorelands-api.auth.token-backend :refer [token-backend]]
+            [buddy.auth.middleware :refer [wrap-authentication]]
+            [buddy.auth :refer [authenticated?]]
             [ring-ttl-session.core :refer [ttl-memory-store]]
             [ring.middleware.webjars :refer [wrap-webjars]]
             [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
             [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
-            [ring.middleware.format :refer [wrap-restful-format]])
+            [ring.middleware.format :refer [wrap-restful-format]]
+            [ring.util.http-response :refer [unauthorized]])
   (:import [javax.servlet ServletContext]))
 
 (defn wrap-context [handler]
@@ -59,6 +63,18 @@
           (assoc-in [:headers "Access-Control-Allow-Origin"] "*")
           (assoc-in [:headers "Access-Control-Allow-Methods"] "GET, PUT, PATCH, POST, DELETE, OPTIONS")
           (assoc-in [:headers "Access-Control-Allow-Headers"] "Authorization, Content-Type")))))
+
+
+(defn token-auth [handler]
+  (wrap-authentication handler token-backend))
+
+
+(defn authentication [handler]
+  (fn [request]
+    (if (authenticated? request)
+      (handler request)
+      (unauthorized {:error "Not authorized"}))))
+
 
 (defn wrap-base [handler]
   (-> ((:middleware defaults) handler)

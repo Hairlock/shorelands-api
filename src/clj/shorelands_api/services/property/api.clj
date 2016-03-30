@@ -1,4 +1,4 @@
-(ns shorelands-api.services.property.core
+(ns shorelands-api.services.property.api
   (:require [ring.util.http-response :refer :all]
             [compojure.api.sweet :refer :all]
             [schema.core :as s]

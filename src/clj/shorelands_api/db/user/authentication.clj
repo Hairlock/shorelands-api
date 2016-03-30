@@ -2,6 +2,8 @@
   (:require [shorelands-api.config :refer [env]]
             [clj-time.core :as time]
             [buddy.sign.jws :as jws]
+            [datomic.api :as d]
+            [shorelands-api.db.core :refer [conn]]
             [shorelands-api.db.user.queries :refer [get-users]]))
 
 
@@ -17,3 +19,8 @@
     (jws/sign token (:auth-key env) {:alg :hs512})))
 
 
+(defn update-user-token
+  [user]
+  (let [new-token (create-token user)]
+    @(d/transact conn [{:db/id (:id user)
+                        :user/token new-token}])))
